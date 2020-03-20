@@ -1,0 +1,16 @@
+ENV["SINATRA_ENV"] ||= "development"
+
+require_relative './config/environment'
+require 'sinatra/activerecord/rake'
+
+desc 'A console' #test if our pry console works without this line 
+task :console do 
+    Pry.start 
+end
+
+#why does line 3 of code go into rakefile and not just the general env?  bc i only need this loaded 
+#into memory when trying to do a rake task. 
+
+
+
+
