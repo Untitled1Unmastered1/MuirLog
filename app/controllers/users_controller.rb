@@ -14,8 +14,5 @@ class UsersController < ApplicationController
         end
     end
 
-    def change
-        
-    end
 end
 
