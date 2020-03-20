@@ -1,28 +1,28 @@
-class PostsController < ApplicationController
+class LogsController < ApplicationController
 
 
-    get '/posts' do 
-        "A list of publicly available posts"
+    get '/logs' do 
+        "A list of publicly available logs"
     end
 
-    get '/posts/new' do 
+    get '/logs/new' do 
         #checking if they are logged in 
         if !logged_in?
             redirect "/login" #redirecting  if they aren't 
         else 
-            "A new post form" #rendering if they are 
+            "A new log form" #rendering if they are 
         end
     end
 
-    get '/posts/:id/edit' do 
+    get '/logs/:id/edit' do 
         if !logged_in?
             redirect "/login" #redirecting  if they aren't 
         else 
             #how do i find the post that only the author user is allowed to edit 
-            if post = current_user.posts.find_by(params[:id])
-            "An edit post form #{current_user.id} is editing #{post.id}"
+            if log = current_user.logs.find_by(params[:id])
+            "An edit log form #{current_user.id} is editing #{log.id}"
             else
-                redirect '/posts'
+                redirect '/logs'
             end 
         end 
     end

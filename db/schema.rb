@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200319211546) do
+ActiveRecord::Schema.define(version: 20200320063053) do
 
   create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
     t.string   "value"
@@ -21,14 +21,17 @@ ActiveRecord::Schema.define(version: 20200319211546) do
 
   add_index "ar_internal_metadata", ["key"], name: "sqlite_autoindex_ar_internal_metadata_1", unique: true
 
-  create_table "posts", force: :cascade do |t|
-    t.string  "title"
-    t.text    "content"
+  create_table "logs", force: :cascade do |t|
+    t.string  "date"
+    t.string  "creature"
+    t.string  "location"
+    t.string  "coordinates"
+    t.text    "description"
     t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
+    t.string "username"
     t.string "password_digest"
   end
 

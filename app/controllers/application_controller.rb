@@ -28,18 +28,18 @@ class ApplicationController < Sinatra::Base
         #18 of the posts_controller. 
 
         def current_user
-            @current_user ||= User.find_by(:email => session[:email]) if session[:email]
+            @current_user ||= User.find_by(:username => session[:username]) if session[:username]
         end 
 
-        def login(email,password)
+        def login(username, password)
             #check if a user with this email actually exists
             #if so set the session 
-            user = User.find_by(:email => email)
+            user = User.find_by(:username => username)
             if user && user.authenticate(password)
                 #if statement assignment: if it returns a user object then it will 
                 #be assigned to the variable, if assigned to varibale correctly, statement is truthy and will end up
                 #with local variable called user, and set session on that, if nil redirect to login 
-                session[:email] = user.email 
+                session[:username] = user.username 
             else 
                 redirect '/login'
             end 

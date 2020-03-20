@@ -5,7 +5,7 @@ class UsersController < ApplicationController
  
     post '/users' do 
         @user = User.new
-        @user.email = params[:email]
+        @user.username = params[:username]
         @user.password = params[:password]
         if @user.save
             redirect '/login'

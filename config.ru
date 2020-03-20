@@ -6,6 +6,6 @@ if ActiveRecord::Migrator.needs_migration?
 
 use Rack::MethodOverride
 use SessionsController
-use PostsController 
+use LogsController 
 use UsersController 
 run ApplicationController
