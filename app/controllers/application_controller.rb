@@ -7,6 +7,11 @@ class ApplicationController < Sinatra::Base
         set :session_secret, "johnmuir"
     end
 
+    get '/' do
+        erb :"logs/home.html"
+        
+    end
+
     #if i comment out lines 6 and 7, i will not have any cookies. why? bc if i start up a sinatra app and turn sessions 
     #off, my app is not issuing the browser a cookie. a cookie is like a receipt, everyone that goes to my website is being
     #issued a secret key, that corresponds to a session on my server. 

@@ -2,7 +2,10 @@ class LogsController < ApplicationController
 
 
     get '/logs' do 
-        "A list of publicly available logs"
+        @logs = Log.all 
+        erb :"logs/index.html"
+        #this method should render the homepage and a feed of other users logs. if you have a log as well it should display
+        #it on the feed above others' logs 
     end
 
     get '/logs/new' do 
