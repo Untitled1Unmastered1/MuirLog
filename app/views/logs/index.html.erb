@@ -1,9 +1,27 @@
-<!DOCTYPE html>
-<html>
-  <body>
-  <h3> Welcome, explorer <%= @user %> 
-    
-  </body>
-</html>
+<h2> Welcome <%= @user.username %>!</h2>
+<br>
+<h3>Your Encounters:</h3>
+<br>
+#here lets add a href link to the past encounters 
 
+<a href="route to create new log"> Create a Log </a><br>
+<a href="your logs profile"> My Logs Profile <a/><br>
+<a href="/logout"> Log Out </a>
+<br>
+<br>
+<br>
 
+<h3>Other Explorers' Recent Encounters:</h3>
+<br>
+<% Log.all.each do |log| %>
+  <div>
+    <!-- <%if log.creature != nil && log.user_id != @user.id%> -->
+      <p>Date: <%= log.date %></p>
+      <p>Creature: <%=User.find(log.user_id).username%></p>
+      <p>General Location: <%= log.location %></p>
+      <p>Coordinates of Encounter/Area of Trail: <%= log.coordinates %></p>
+      <p>Description of Encounter: <%= log.description %></p>
+      <br>
+    <!-- <%end%> -->
+  </div>
+<% end %>

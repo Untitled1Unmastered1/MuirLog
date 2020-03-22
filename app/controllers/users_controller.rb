@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     end
 
     get '/login' do
-        erb :"logs/login.html"
+        erb :"users/login.html"
     end 
 
     post '/sessions' do 
