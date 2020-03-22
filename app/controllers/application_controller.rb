@@ -1,3 +1,7 @@
+require './config/environment'
+require '/sinatra/flash'
+
+
 class ApplicationController < Sinatra::Base 
 
     configure do 
@@ -5,8 +9,11 @@ class ApplicationController < Sinatra::Base
         set :views, 'app/views'
         enable :sessions
         set :session_secret, "johnmuir"
+        register Sinatra::Flash  #allows you to pop up little messages alerting your users of important things such as 
+        #errors 
     end
 
+    #home
     get '/' do
         erb :"logs/home.html"
     end
