@@ -9,7 +9,6 @@ class ApplicationController < Sinatra::Base
 
     get '/' do
         erb :"logs/home.html"
-        
     end
 
     #if i comment out lines 6 and 7, i will not have any cookies. why? bc if i start up a sinatra app and turn sessions 

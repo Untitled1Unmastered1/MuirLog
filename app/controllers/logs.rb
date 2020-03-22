@@ -1,4 +1,5 @@
 class LogsController < ApplicationController
+    
     #create 
     get '/logs/new' do 
         #checking if they are logged in 
