@@ -2,7 +2,7 @@
 
 
 <%= "Must include username and password" if @user && @user.errors.any? %>
-<form action="/users" method="POST">
+<form action="/signup" method="POST">
   <p>
      <label for="username">Username:</label> 
   <input type="text" name="username" id="username" />

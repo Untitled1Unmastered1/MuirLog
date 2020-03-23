@@ -1,32 +1,51 @@
 class UsersController < ApplicationController
 
     #signup route 
-    
-    #login route 
-    get '/login' do
-        erb :"users/login.html"
-    end 
 
-    post '/sessions' do 
-        #login a user with this email 
-        login(params[:username], params[:password])
-        redirect '/logs'
-    end
-
-    get '/logout' do 
-        logout! 
-        redirect '/logs'
-    end
- 
-    post '/users' do 
-        @user = User.new
-        @user.username = params[:username]
-        @user.password = params[:password]
-        if @user.save
+    get '/signup' do 
+        if logged_in?
+            "You are already logged in."
             redirect '/logs'
         else 
             erb :"users/new.html"
         end
+    end
+
+    post '/signup' do 
+        if logged_in?
+            "You are already logged in."
+            redirect to '/logs'
+        elsif  
+            params[:username] == "" || params[:password] == ""
+            "need a username and password to establish an account"
+            redirect to'/signup'
+        else 
+            @user = User.create(username: params[:username], password: params[:password])
+            @user.save 
+            session[:user_id] = @user.id 
+            redirect to '/logs'
+        end
+    end
+    
+    #login route 
+    get '/login' do
+        if logged_in?
+            "You are already logged in."
+            redirect to '/logs'
+        else 
+            erb :"users/login.html"
+        end 
+    end 
+
+    post '/login' do 
+        login(params[:username], params[:password])
+        redirect '/logs'
+    end
+
+    #logout route 
+    get '/logout' do 
+        logout! 
+        redirect '/'
     end
 
 end

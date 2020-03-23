@@ -51,10 +51,11 @@ class ApplicationController < Sinatra::Base
                 #be assigned to the variable, if assigned to varibale correctly, statement is truthy and will end up
                 #with local variable called user, and set session on that, if nil redirect to login 
                 session[:username] = user.username 
-            else 
-                redirect '/login'
+            else
+                "Username and password are incorrect. Try again"
+                redirect to '/login'
             end 
-        end
+        end 
 
         def logout!
             session.clear 
