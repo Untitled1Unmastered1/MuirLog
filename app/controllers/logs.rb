@@ -1,12 +1,11 @@
 class LogsController < ApplicationController
     
     #create 
-    get '/logs/new' do 
-        #checking if they are logged in 
-        if logged_in?
+    get '/logs/new' do  #takes you to the create log page 
+        if logged_in? #checking if they are logged in 
             erb :"logs/newlog.html" #redirecting  if they aren't 
         else 
-            redirect '/login' #rendering if they are 
+            redirect '/login' #rendering if they aren't, need to add flash message here 
         end
     end
 

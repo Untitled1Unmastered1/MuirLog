@@ -1,1 +1,23 @@
-<h1> create your form here <h1> 
+<h1>Create a Log!</h1>
+
+<form action="/logs" method="POST">
+  <p><b>Date:</b> <input type="text" name="date"></p>
+  <p>
+    <b>Creature:</b> <input type="text" name="creature"></p>
+  <p>
+     <b>General Location:</b> <input type="text" name="location"></p>
+   <p> 
+     <b>Coordinates of Encounter/Area of Trail:</b><br>
+     <textarea rows="3" cols="50" name="coordinates"></textarea>
+   </p>
+   <p>
+    <b>Description of Encounter:</b><br>
+    <textarea rows="6" cols="75" name="content"></textarea>
+  </p>
+  
+  </p>
+  <p><input type='submit' value='Submit'></p>
+</form>
+
+<p><a href='/logout'>Log Out</a></p>
+<p><a href='/logs'>Cancel</a></p>
