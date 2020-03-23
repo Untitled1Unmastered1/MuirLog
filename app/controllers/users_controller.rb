@@ -15,14 +15,13 @@ class UsersController < ApplicationController
         if logged_in?
             "You are already logged in."
             redirect to '/logs'
-        elsif  
-            params[:username] == "" || params[:password] == ""
+        elsif params[:username] == "" || params[:password] == ""
             "need a username and password to establish an account"
             redirect to'/signup'
         else 
             @user = User.create(username: params[:username], password: params[:password])
             @user.save 
-            session[:user_id] = @user.id 
+            session[:username] = @user.username 
             redirect to '/logs'
         end
     end
