@@ -1,9 +1,8 @@
 class UsersController < ApplicationController
-    
-    get '/signup' do 
-        erb :"users/new.html"
-    end
 
+    #signup route 
+    
+    #login route 
     get '/login' do
         erb :"users/login.html"
     end 

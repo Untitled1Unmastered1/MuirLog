@@ -1,6 +1,4 @@
 require './config/environment'
-require '/sinatra/flash'
-
 
 class ApplicationController < Sinatra::Base 
 
@@ -9,8 +7,6 @@ class ApplicationController < Sinatra::Base
         set :views, 'app/views'
         enable :sessions
         set :session_secret, "johnmuir"
-        register Sinatra::Flash  #allows you to pop up little messages alerting your users of important things such as 
-        #errors 
     end
 
     #home
@@ -21,12 +17,16 @@ class ApplicationController < Sinatra::Base
     #if i comment out lines 6 and 7, i will not have any cookies. why? bc if i start up a sinatra app and turn sessions 
     #off, my app is not issuing the browser a cookie. a cookie is like a receipt, everyone that goes to my website is being
     #issued a secret key, that corresponds to a session on my server. 
-
+ 
+    
     helpers do 
 
         def logged_in?
             !!current_user  
         end 
+
+        #A helper method is a method written for the view, it's designed to be reusable anywhere within the website, and 
+         # it cleans up the view code by separating out some logic.
 
         # the first time you called logged_in? in the context of a request, i call current_user. if i was able to log you 
         #in bc in your session i found an email, and i can find a user by that email, and i can set that object to an 
