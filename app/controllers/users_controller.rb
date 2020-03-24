@@ -45,6 +45,15 @@ class UsersController < ApplicationController
         end
     end
 
+    get '/profile' do
+        if logged_in?
+             @logs = current_user.logs.all 
+             erb :"users/logs.html"
+        else 
+            redirect '/login' #flash message to please login to view logs
+        end 
+    end
+
     #logout route 
     get '/logout' do 
         logout! 
