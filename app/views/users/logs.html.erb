@@ -1,14 +1,15 @@
-<h1> Welcome to your Log <h1>
+<h1> - Welcome to your Log - <h1>
 
+<br>
 <h2> Your Encounters: <h2>
-
+<br>
 <% @logs.each do |log| %>
 
-
-   <p>Date: <a href="/logs/<%=log.id%>"><%= log.date %></a></p>
+   <a href="/logs/<%=log.id%>"><%= log.date %></a></p>
 
    <% end %>
-
-<p><a href='/logs'>See other Explorers' Encounters!</a></p>
-<p><a href='/logout'>Log Out</a></p>
+   <br>
+   <br>
+<h3><a href='/logs'>See other Explorers' Encounters!</a></p>
+<h3><a href='/logout'>Log Out</a></p>
    
