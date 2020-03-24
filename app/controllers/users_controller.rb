@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         else 
             @user = User.create(username: params[:username], password: params[:password])
             @user.save 
-            session[:username] = @user.username 
+            session[:user_id] = @user.id 
             redirect to '/logs'
         end
     end
@@ -29,16 +29,20 @@ class UsersController < ApplicationController
     #login route 
     get '/login' do
         if logged_in?
-            "You are already logged in."
-            redirect to '/logs'
+            redirect to '/logs' #flash message to say "You are already logged in."
         else 
             erb :"users/login.html"
         end 
     end 
 
     post '/login' do 
-        login(params[:username], params[:password])
-        redirect '/logs'
+        @user = User.find_by(username: params[:username])
+        if @user && @user.authenticate(params[:password])
+            session[:user_id] = @user.id  
+            redirect '/logs'
+        else 
+            redirect '/login' #flash message to say "Your username or password were not correct. Please try again."
+        end
     end
 
     #logout route 

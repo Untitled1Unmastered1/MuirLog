@@ -2,7 +2,19 @@
 <br>
 <h3>Your Encounters:</h3>
 <br>
-#here lets add a href link to the past encounters 
+<% @logs.each do |log| %>
+ <div>
+   <p>Date: <a href="/logs/<%=log.id%>"><%= log.date %></a></p>
+   <p>Creature: <%= log.creature %></p>
+   <p>General Location: <%= log.location %></p>
+   <p>Coordinates of Encounter/Area of Trail: <%= log.coordinates %></p>
+   <p>Description of Encounter: <%= log.description %></p>
+   <br>
+
+  </div>
+<% end %>
+
+
 
 <a href="/logs/new"> Create a Log </a><br>
 <a href="link to profile"> My Logs Profile <a/><br>
@@ -17,7 +29,8 @@
   <div>
     <!-- <%if log.creature != nil && log.user_id != @user.id%> -->
       <p>Date: <%= log.date %></p>
-      <p>Creature: <%=User.find(log.user_id).username%></p>
+      <p>User: <%=User.find(log.user_id).username%></p>
+      <p>Creature: <%= log.creature %></p>
       <p>General Location: <%= log.location %></p>
       <p>Coordinates of Encounter/Area of Trail: <%= log.coordinates %></p>
       <p>Description of Encounter: <%= log.description %></p>

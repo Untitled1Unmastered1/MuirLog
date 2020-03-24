@@ -9,6 +9,23 @@ class LogsController < ApplicationController
         end
     end
 
+    post '/logs' do 
+        if params[:date] == "" || params[:creature] == "" || params[:location] == "" || params[:coordinates] == "" || 
+            params[:description] == "" #want a flash error message here 
+            redirect to '/logs/new'
+        else 
+            user = current_user
+            @log = Log.create(
+                :date => params[:date],
+                :creature => params[:creature],
+                :location => params[:location],
+                :coordinates => params[:coordinates],
+                :description => params[:description],
+                :user_id => user.id)
+                redirect to "logs/#{@log.id}"
+        end 
+    end
+
     #read 
     get '/logs' do 
         if logged_in?
@@ -16,11 +33,23 @@ class LogsController < ApplicationController
             @logs = @user.logs.all 
             erb :"logs/index.html"
         else 
-            "Oops! Looks like you're not logged in. Try again."
-            redirect '/login'
+            redirect '/login' #need flash message to state not logged in 
         end 
         #this method should render the homepage and a feed of other users logs. if you have a log as well it should display
         #it on the feed above others' logs 
+    end
+
+    get '/logs/:id' do 
+        if logged_in?
+            @log = Log.find_by_id(params[:id])
+            if @log.user_id == session[:user_id]
+                erb :"/logs/show.html"
+            elsif @log.user_id != session[:user_id] #or username? 
+                redirect '/logs'
+            end
+        else 
+            redirect '/logs' #need flash message to state you werent logged in 
+        end
     end
 
     #update 

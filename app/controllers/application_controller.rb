@@ -9,14 +9,14 @@ class ApplicationController < Sinatra::Base
         set :session_secret, "johnmuir"
     end
 
+    #if i comment out lines 6 and 7, i will not have any cookies. why? bc if i start up a sinatra app and turn sessions 
+    #off, my app is not issuing the browser a cookie. a cookie is like a receipt, everyone that goes to my website is being
+    #issued a secret key, that corresponds to a session on my server. 
+
     #home
     get '/' do
         erb :"logs/home.html"
     end
-
-    #if i comment out lines 6 and 7, i will not have any cookies. why? bc if i start up a sinatra app and turn sessions 
-    #off, my app is not issuing the browser a cookie. a cookie is like a receipt, everyone that goes to my website is being
-    #issued a secret key, that corresponds to a session on my server. 
  
     
     helpers do 
@@ -39,23 +39,9 @@ class ApplicationController < Sinatra::Base
         #18 of the posts_controller. 
 
         def current_user
-            @current_user ||= User.find_by(:username => session[:username]) if session[:username]
+            @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
         end 
 
-        def login(username, password)
-            #check if a user with this email actually exists
-            #if so set the session 
-            user = User.find_by(:username => username)
-            if user && user.authenticate(password)
-                #if statement assignment: if it returns a user object then it will 
-                #be assigned to the variable, if assigned to varibale correctly, statement is truthy and will end up
-                #with local variable called user, and set session on that, if nil redirect to login 
-                session[:username] = user.username 
-            else
-                "Username and password are incorrect. Try again"
-                redirect to '/login'
-            end 
-        end 
 
         def logout!
             session.clear 

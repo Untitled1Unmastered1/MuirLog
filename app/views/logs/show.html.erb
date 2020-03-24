@@ -1,0 +1,15 @@
+<h2> <%= @log.date %> </h2>
+
+<p>Creature: <%= @log.creature %></p>
+<p>General Location: <%= @log.location %></p>
+<p>Coordinates of Encounter/Area of Trail: <%= @log.coordinates %></p>
+<p>Description of Encounter: <%= @log.description %></p>
+
+<form action="/logs/<%=@log.id%>/delete" method="post">
+  <input id="hidden" type="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete This Log">
+</form>
+
+<p><a href='/logs/<%=@log.id%>/edit'>Edit this Log</a></p>
+<p><a href='/logs'>See other Explorers' Encounters!</a></p>
+<p><a href='/logout'>Log Out</a></p>
