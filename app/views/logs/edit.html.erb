@@ -1,0 +1,23 @@
+<h2>Edit this Log:</h2>
+
+
+<form action="/logs/<%=@log.id%>" method="POST">
+<input id="hidden" type="hidden" name="_method" value="patch">
+  <p><b>Date:</b> <input type="text" name="date" value="<%=@log.date %>"></p>
+  <p>
+    <b>Creature:</b> <input type="text" name="creature" value="<%=@log.creature %>"></p>
+  <p>
+     <b>General Location:</b> <input type="text" name="location" value="<%=@log.location %>"></p>
+   <p> 
+     <b>Coordinates of Encounter/Area of Trail:</b><br>
+     <textarea rows="3" cols="50" name="coordinates"><%=@log.coordinates%></textarea>
+   </p>
+   <p>
+    <b>Description of Encounter:</b><br>
+    <textarea rows="4" cols="50" name="description"><%=@log.description%></textarea>
+  </p>
+    <p><input type="submit" value='Edit this Log'></p>
+  </form>
+
+<p><a href='/logout'>Log Out</a></p>
+<p><a href='/logs'>Cancel</a></p>
