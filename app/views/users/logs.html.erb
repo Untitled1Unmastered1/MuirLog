@@ -2,4 +2,13 @@
 
 <h2> Your Encounters: <h2>
 
-<a href="">
+<% @logs.each do |log| %>
+
+
+   <p>Date: <a href="/logs/<%=log.id%>"><%= log.date %></a></p>
+
+   <% end %>
+
+<p><a href='/logs'>See other Explorers' Encounters!</a></p>
+<p><a href='/logout'>Log Out</a></p>
+   
