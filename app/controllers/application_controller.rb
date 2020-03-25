@@ -14,7 +14,7 @@ class ApplicationController < Sinatra::Base
     #issued a secret key, that corresponds to a session on my server. 
 
     #home
-    get '/' do
+    get '/' do 
         erb :"logs/home.html"
     end
  
@@ -41,6 +41,14 @@ class ApplicationController < Sinatra::Base
         def current_user
             @current_user ||= User.find_by_id(session[:user_id]) if session[:user_id]
         end 
+
+        #add helper method to use flash error messages. and make sure to render an erb file, which will display the error
+        #messages, use a conditional within the erb file. @user = User.find_by(params) if user.valid redirect to home page
+        # user.errors = "stringwhatever errors are" add a key value pair to the hash. if user.errors.any? render this 
+        #error message, multiple conditionals for different error messages. 
+
+        #whatever instances are on one page, once refreshed/ redirected these objects dissapears. but if i render,
+        #they're still existent. render is preferred, over redirecting. 
 
 
         def logout!
