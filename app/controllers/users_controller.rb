@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     get '/profile' do
         if logged_in?
              @logs = current_user.logs.all 
-             erb :"users/logs.html"
+             erb :"users/logs"
         else 
             redirect '/login' #flash message to please login to view logs
         end 
