@@ -15,7 +15,7 @@ class ApplicationController < Sinatra::Base
 
     #home
     get '/' do 
-        erb :"logs/home.html"
+        erb :"logs/home"
     end
  
     
