@@ -1,10 +1,55 @@
-<h1>MuirLog<h1>
+<html>
+<head>
+    <style>
+        #welcome #muirlog {
+            font-family: "Brush Script MT", Brush Script Std, cursive;
+            font-size: 80px;
+            color: black;
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
 
+        #welcome #welcome_to {
+            font-family: "Courier New", monospace;
+            font-size: 20px;
+            margin-left: 100px;
+            margin-bottom: 0;
+        }
 
-<h3>Hello, Explorer. Sign up or login to create your Log.</h3>
+        #welcome #instructions {
+            font-family: "Courier New", monospace;
+            font-size: 17px;
+            text-align: center;
+        }
 
+        #welcome p {
+            margin-top: 0;
+            text-align: center;
+            font-family: "Courier New", monospace;
+        }
 
-            <a id="signup" href="/signup"><button>Begin your Log</button></a>
+        #welcome #button {
+            text-align: center;
+        }
+
+        #welcome #button button {
+            font-size: 25px;
+        } 
+    </style>
+</head>
+
+<div id= "welcome">
+    <div>
+        <h5 id="welcome_to">Welcome to...</h5>
+            <h1 id= "muirlog"> MuirLog </h1>
+            <br>
+        </div>
+    <div>
+        <h3 id="instructions">Hello, Explorer. Sign up or login to create your Log.</h3>
+        <br>
+        <div id="button">
+            <a id="signup" href="/signup"><button>Begin Your Log</button></a>
             <a id="login" href="/login"><button>Log In</button></a>
         </div>
     </div>
