@@ -31,7 +31,7 @@ class LogsController < ApplicationController
         if logged_in?
             @user = current_user
             @logs = @user.logs.all 
-            erb :"logs/index.html"
+            erb :"logs/index"
         else 
             redirect '/login' #need flash message to state not logged in 
         end  
