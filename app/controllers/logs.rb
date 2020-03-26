@@ -55,7 +55,7 @@ class LogsController < ApplicationController
         if logged_in?
             @log = Log.find_by_id(params[:id])
         if @log.user_id == session[:user_id]
-            erb :"logs/edit.html"
+            erb :"logs/edit"
         else
             redirect to '/logs' #flash message stating that its not users review
         end
