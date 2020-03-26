@@ -31,7 +31,7 @@ class UsersController < ApplicationController
         if logged_in?
             redirect to '/logs' #flash message to say "You are already logged in."
         else 
-            erb :"users/login.html"
+            erb :"users/login"
         end 
     end 
 
