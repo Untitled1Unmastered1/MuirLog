@@ -5,11 +5,11 @@
 <br>
 <% @logs.each do |log| %>
 
-   <a href="/logs/<%=log.id%>"><%= log.date %></a></p>
+   <a href="/logs/<%=log.id%>" style="color:red;" ><%= log.date %> </a></p>
 
    <% end %>
    <br>
    <br>
-<h3><a href='/logs'>See other Explorers' Encounters!</a></p>
-<h3><a href='/logout'>Log Out</a></p>
+<h3><a href='/logs' style="color:silver;">See other Explorers' Encounters!</a></p>
+<h3><a href='/logout' style="color:silver;" >Log Out</a></p>
    

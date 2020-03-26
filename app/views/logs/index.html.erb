@@ -5,7 +5,7 @@
 <br>
 <% @logs.each do |log| %>
  <div>
-   <p>Date: <a href="/logs/<%=log.id%>"><%= log.date %></a></p>
+   <p>Date: <a href="/logs/<%=log.id%>" style="color:silver;"><%= log.date %></a></p>
    <p>Creature: <%= log.creature %></p>
    <p>General Location: <%= log.location %></p>
    <p>Coordinates of Encounter/Area of Trail: <%= log.coordinates %></p>
@@ -17,9 +17,9 @@
 
 
 
-<a href="/logs/new"> Create a Log </a><br>
-<a href="/profile"> My Logs Profile <a/><br>
-<a href="/logout"> Log Out </a>
+<a href="/logs/new" style="color:silver;"> Create a Log </a><br>
+<a href="/profile" style="color:silver;"> My Logs Profile <a/><br>
+<a href="/logout" style="color:silver;"> Log Out </a>
 <br>
 <br>
 <br>
