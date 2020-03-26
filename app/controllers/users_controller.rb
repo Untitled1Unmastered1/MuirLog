@@ -7,7 +7,7 @@ class UsersController < ApplicationController
             "You are already logged in."
             redirect '/logs'
         else 
-            erb :"users/new.html"
+            erb :"users/new"
         end
     end
 
