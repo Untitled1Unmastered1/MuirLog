@@ -1,17 +1,23 @@
-<h1>Signup!<h1>
-
-
-<%= "Must include username and password" if @user && @user.errors.any? %>
-<form action="/signup" method="POST">
-  <p>
-     <label for="username">Username:</label> 
-  <input type="text" name="username" id="username" />
-  </p>
-   <p>
-     <label for="password">Password:</label> 
-  <input type="password" name="password" id="password" />
-  </p>
-
-  <input type="submit"  />
-
-  </form>
+<html>
+    <head>
+        <style>
+        </style>
+    </head>
+<h1>Sign Up Here.</h1>
+    <div>
+      <%= "Must include username and password" if @user && @user.errors.any? %>
+        <form action="/signup" method="POST">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" />
+            </div>
+            <br>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <br>
+                <input type="submit" >
+        </form>
+    </div>
+</html>
