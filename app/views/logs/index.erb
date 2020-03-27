@@ -1,12 +1,12 @@
 <html>
-<h2> Welcome <%= @user.username %>!</h2>
+<h2 style="color:silver;">  Welcome <%= @user.username %>!</h2>
 <br>
-<h3>Your Encounters:</h3>
+<h1>Your Encounters:</h1>
 <br>
 <% @logs.each do |log| %>
- <div>
+ <div style="color:silver;">
    <p>Date: <a href="/logs/<%=log.id%>" style="color:silver;"><%= log.date %></a></p>
-   <p>Creature: <%= log.creature %></p>
+   <p>Creature: <%= log.creature %> </p>
    <p>General Location: <%= log.location %></p>
    <p>Coordinates of Encounter/Area of Trail: <%= log.coordinates %></p>
    <p>Description of Encounter: <%= log.description %></p>
@@ -24,10 +24,10 @@
 <br>
 <br>
 
-<h3>Other Explorers' Recent Encounters:</h3>
+<h1 style="color:gold;">Other Explorers' Recent Encounters!</h1>
 <br>
 <% Log.all.each do |log| %>
-  <div>
+  <div style="color:gold;">
     <!-- <%if log.creature != nil && log.user_id != @user.id%> -->
       <p>Date: <%= log.date %></p>
       <p>User: <%=User.find(log.user_id).username%></p>
