@@ -1,9 +1,9 @@
-#MuirLog 
+MuirLog 
 
 This is a CRUD, MVC app using Sinatra. A User can create an account, then proceed to log animal encounters and all related details as well as see the encounters of others through the main feed. A User can create, read, update and delete a Log. As well as have a collection of them. They are not allowed to do this with any logs which do not belong to them. 
 
 
-#Getting Started 
+Getting Started 
 
 In your terminal paste the following: 
 
