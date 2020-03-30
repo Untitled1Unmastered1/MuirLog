@@ -42,11 +42,10 @@ class LogsController < ApplicationController
             @log = Log.find_by_id(params[:id])
             if @log.user_id == session[:user_id]
                 erb :"/logs/show"
-            elsif @log.user_id != session[:user_id] 
+            else @log.user_id != session[:user_id] 
                 redirect '/logs'
             end
-        else 
-            redirect '/logs' #need flash message to state you werent logged in ; this may be your current bug 
+
         end
     end
 
