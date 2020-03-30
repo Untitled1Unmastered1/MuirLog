@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
     #signup route 
-
     get '/signup' do 
         if logged_in?
             "You are already logged in."
@@ -59,6 +58,5 @@ class UsersController < ApplicationController
         logout! 
         redirect '/'
     end
-
 end
 
