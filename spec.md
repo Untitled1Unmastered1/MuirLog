@@ -23,6 +23,9 @@ Specifications for the Sinatra Assessment Specs:
 Confirm
 
 [X] - You have a large number of small Git commits
+
 [X] -  Your commit messages are meaningful
+
 [X] - You made the changes in a commit that relate to the commit message
+
 [X] -  You don't include changes in a commit that aren't related to the commit message
