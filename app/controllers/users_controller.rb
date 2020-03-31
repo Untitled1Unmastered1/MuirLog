@@ -11,19 +11,20 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do 
-        if logged_in?
-            "You are already logged in."
-            redirect to '/logs'
-        elsif params[:username] == "" || params[:password] == ""
-            "need a username and password to establish an account"
-            redirect to'/signup'
+        if params[:username] == "" || params[:password] == ""
+            redirect to '/signup'
         else 
-            @user = User.create(username: params[:username], password: params[:password])
-            @user.save 
-            session[:user_id] = @user.id 
-            redirect to '/logs'
+            @user = User.new(username: params[:username], password: params[:password])
+            if @user.valid? 
+                @user.save 
+                session[:user_id] = @user.id 
+                redirect to '/logs'
+            else 
+                redirect to '/signup'
+            end
         end
     end
+
     
     #login route 
     get '/login' do

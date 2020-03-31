@@ -28,7 +28,7 @@ class LogsController < ApplicationController
 
     #read 
     get '/logs' do 
-        if logged_in?
+        if current_user
             @user = current_user
             @logs = @user.logs.all 
             erb :"logs/index"
@@ -38,16 +38,18 @@ class LogsController < ApplicationController
     end
 
     get '/logs/:id' do 
-        if logged_in?
-            @log = Log.find_by_id(params[:id])
-            if @log.user_id == session[:user_id]
-                erb :"/logs/show"
-            else @log.user_id != session[:user_id] 
+        if @log = Log.find_by_id(params[:id]) 
+            if @log.user_id == current_user.id
+                    erb :"/logs/show"
+            else 
                 redirect '/logs'
+            end 
+        else 
+            if @log == nil 
+                redirect to '/logs'
             end
-
-        end
-    end
+        end 
+    end 
 
     #update 
     get '/logs/:id/edit' do 
@@ -64,18 +66,19 @@ class LogsController < ApplicationController
 end 
 
     patch '/logs/:id' do 
+        @log = Log.find_by_id(params[:id])
         if params[:date] == "" || params[:creature] == "" || params[:location] == "" || params[:coordinates] == "" || 
-           params[:description] == "" #all fields aren't filled on edit form 
+           params[:description] == ""  #all fields aren't filled on edit form 
            redirect to '/logs/#{params[:id]}/edit' #flash message: to let user know all fields must be filled
-        else 
-            @log = Log.find_by_id(params[:id])
+        elsif @log.user_id == session[:user_id]
             @log.date = params[:date]
             @log.creature = params[:creature]
             @log.location = params[:location]
             @log.coordinates = params[:coordinates]
             @log.user_id = current_user.id
             @log.save
-            redirect to "/logs/#{@log.id}" #flash message:log updated, bug may be here 
+            redirect to "/logs/#{@log.id}"
+        else  #flash message:log updated, bug may be here 
         end 
     end
 

@@ -1,0 +1,4 @@
+when a user signs up, make sure username isnt already taken. 
+make sure a user cannot edit another users log. 
+activerecord validations, uniqueness. 
+send a link on slack when those changes are made. said i should be good. 
